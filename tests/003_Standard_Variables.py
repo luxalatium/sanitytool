@@ -28,7 +28,7 @@ class Standard_Variables(TestBase):
   def execute(self):
     # Different variable are necessary on different machines.
     standardVarT = {
-      'stampede' : [ "HOME", "WORK", "STOCKYARD", "SCRATCH" ],
+      'stampede2' : [ "HOME", "WORK", "STOCKYARD", "SCRATCH" ],
       'ls4'      : [ "HOME", "WORK", "SCRATCH" ],
       'ls5'      : [ "HOME", "WORK", "STOCKYARD", "SCRATCH" ],
       'maverick' : [ "HOME", "WORK", "STOCKYARD" ],

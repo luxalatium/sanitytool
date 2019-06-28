@@ -91,7 +91,7 @@ fi
 ###block_large=`grep "^largemem" /etc/slurm/tacc_filter_options | grep $user`
 
 ##Whether the user is blocked from general submission:
-block_normal=`awk '/ALL *= /,/ALL *= /' $block_list | awk '{gsub(/ /, "", $0); print substr($0,7,length($0)-7)}' | awk -v user="$user" 'BEGIN {FS="!!"}; {for (i=1; i<=NF; i++) if ($i == user) {print $0}}'`
+block_normal=`awk '/ALL *= /,/ALL *= /' $block_list | awk '{gsub(/ /, "", $0); print substr($0,7,length($0)-7)}' | awk -v user="$user" 'BEGIN {FS=" |!"}; {for (i=1; i<=NF; i++) if ($i == user) {print $0}}'`
 ##whether the user is blocked from largemem queue submission:
 block_large=`awk '($1=="largemem")' $block_list | awk '{gsub(/ /, "", $0);print substr($0,12, length($0)-12)}' |  awk -v user="$user" 'BEGIN {FS="!!"}; {for (i=1; i<=NF; i++) if ($i == user) {print $0}}'`
 ##whether the user is blocked from mic queue submission

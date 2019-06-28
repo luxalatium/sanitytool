@@ -26,7 +26,7 @@ class Schedulers(TestBase):
 
   def execute(self):
       host=syshost()
-      if (host=="stampede" or host=="maverick" or host=="ls5"):
+      if (host=="stampede2" or host=="maverick" or host=="ls5"):
         commands=["sbatch","squeue","scancel","scontrol"]
       elif host=="ls4":
         commands=["qsub","qstat","qdel"]

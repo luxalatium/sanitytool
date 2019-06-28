@@ -28,7 +28,7 @@ class Quota(TestBase):
       userid=capture("whoami").rstrip()
       host=syshost()
      
-      if (host=="stampede" or host=="ls5"):
+      if (host=="stampede2" or host=="ls5"):
         spaces=["/home1","/work"]
       elif host=="ls4":
 	spaces=["/home1","/work"]
@@ -48,14 +48,13 @@ class Quota(TestBase):
           quotainfo=rawinfo[-2].split()     
 ##	  print(quotainfo[0],quotainfo[2],quotainfo[3],quotainfo[5])          
 ##        print(quotainfo)
-##	  if len(quotainfo) <6:
           if len(quotainfo) <6 or (not (quotainfo[0]).isdigit()):
             self.error_message+="\tError: "+"No valid quota report\n"
             return False
-          if float(quotainfo[0]) >= float(quotainfo[2])*0.95 :
+          if float(quotainfo[0]) >= float(quotainfo[2])*0.9 :
             Flag=False
             self.error_message+="\tError: You are over/close to the disk limit under %s.\n" %space
-          if float(quotainfo[3]) >= float(quotainfo[5])*0.95 :
+          if float(quotainfo[3]) >= float(quotainfo[5])*0.9 :
             Flag=False
             self.error_message+="\tError: You are over/close to the inode limit under %s.\n" %space
 
@@ -71,10 +70,10 @@ class Quota(TestBase):
 	    self.error_message+="\tError: "+"No valid quota report\n"
             return False
 	
-	  if float(quotainfo[1]) >= float(quotainfo[3])*0.95 :
+	  if float(quotainfo[1]) >= float(quotainfo[3])*0.85 :
             Flag=False
 	    self.error_message+="\tError: You are over/close to the disk limit under %s.\n" %space   
-          if float(quotainfo[5]) >= float(quotainfo[7])*0.95 :	
+          if float(quotainfo[5]) >= float(quotainfo[7])*0.85 :	
             Flag=False
             self.error_message+="\tError: Your are over/close to the inode limit under %s.\n" %space 
           

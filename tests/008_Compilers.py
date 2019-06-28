@@ -35,6 +35,7 @@ class Compilers(TestBase):
         output=capture(typecmd)
 #       print(output)
         if "not found" in output:
-          Flag=False
-	  self.error_message+="\tError: Compiler %s is not available at this time!\n" %compiler1
+          print("\033[1;33m\tWarning: %s is not available right now.\033[0m" %compiler1)
+#         Flag=False
+# 	  self.error_message+="\tError: Compiler %s is not available at this time!\n" %compiler1
       return Flag     

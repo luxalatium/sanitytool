@@ -15,7 +15,7 @@ class Block_User(TestBase):
     return "Check user's queue accessibility"
 
   def description(self):
-    return "Check user's queue accessibility (Stampede Only):"
+    return "Check user's queue accessibility (on Stampede2):"
 
   def error(self):
      print("\033[1;31m%s\033[0m" %(self.error_message))
@@ -25,12 +25,12 @@ class Block_User(TestBase):
 
   def execute(self):
     host = syshost()
-    if host!="stampede":
+    if host!="stampede2":
       return True
 
     userid=capture("whoami").rstrip()
     
-    grepcmd1="""awk '/ALL = /,/ALL = /' /etc/slurm/tacc_filter_options | awk '{print substr($0,7,length($0)-7)}' | awk -v user=%s 'BEGIN {FS=" !!"}; {for (i=1; i<=NF; i++) if($i == user) {print $0}}'""" %userid      
+    grepcmd1="""awk '/ALL = /,/ALL = /' /etc/slurm/tacc_filter_options | awk '{print substr($0,7,length($0)-7)}' | awk -v user=%s 'BEGIN {FS=" |!"}; {for (i=1; i<=NF; i++) if($i == user) {print $0}}'""" %userid      
 #    print(grepcmd1)
     myrecord1=capture(grepcmd1).split('\n')
 #    print(myrecord1)

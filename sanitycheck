@@ -56,7 +56,7 @@ def main():
   vstr = vstr.replace("@git@",replace_str)
 
 #Please remember to update the version
-  vstr="1.3"
+  vstr="1.5"
   my_version=vstr
 
 ########################################################################
