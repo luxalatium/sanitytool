@@ -1,3 +1,15 @@
+Merged the update online
+Si Liu
+Oct 10, 2019
+Special thanks to "paddydoyle"
+ slightly more pythonic way of getting $HOME and $USER
+specifically:
+- replace the awk of /etc/passwd with os.path.expanduser('~') (this is a
+  cross-platform way of getting the home dir)
+- replace whoami with getpass.getuser() (this is a cross-platform way of
+  getting the username)
+
+
 Reorganize the git repository
 Si Liu
 Sep 3, 2019

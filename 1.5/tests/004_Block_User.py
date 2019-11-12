@@ -49,9 +49,9 @@ class Block_User(TestBase):
 #    print(myrecord) 
    
     for ss in myrecord1:
-	if ss and not ss.strip().startswith('#'):
-		self.error_message+="\tError: You are blocked from general submission.\n"
-		return False
+        if ss and not ss.strip().startswith('#'):
+                self.error_message+="\tError: You are blocked from general submission.\n"
+                return False
     for ss in myrecord2:
         if ss and not ss.strip().startswith('#'):
                 self.error_message+="\tError: You are blocked from largemem queue submission.\n"

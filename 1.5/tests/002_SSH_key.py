@@ -38,7 +38,7 @@ class SSH_key(TestBase):
     cmd2    ="awk '{if ($1!=\"ssh-dss\" && $1!=\"ssh-rsa\" || NF <= 1) print $0}' ~/.ssh/authorized_keys"
     cmd2_out = capture(cmd2)
     if cmd2_out:
-	self.error_message+="\tError: ~/.ssh/authorized_keys includes invalid or broken key(s).\n"
-	return False;
+        self.error_message+="\tError: ~/.ssh/authorized_keys includes invalid or broken key(s).\n"
+        return False;
      
     return result

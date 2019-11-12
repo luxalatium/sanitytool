@@ -31,9 +31,9 @@ class Quota(TestBase):
       if (host=="stampede2" or host=="ls5"):
         spaces=["/home1","/work"]
       elif host=="ls4":
-	spaces=["/home1","/work"]
+        spaces=["/home1","/work"]
       elif (host=="maverick"):
-	spaces=["/home","/work"]
+        spaces=["/home","/work"]
       else:
         return True
 
@@ -43,7 +43,7 @@ class Quota(TestBase):
         if ( (host=="ls4" and space=="/home1") or (host=="maverick" and space=="/home") or (host=="ls5" and space=="/home1")):
           quotacmd="quota"
           rawinfo=capture(quotacmd).split("\n")
-	  if len(rawinfo)<3:
+          if len(rawinfo)<3:
             return False
           quotainfo=rawinfo[-2].split()     
 ##	  print(quotainfo[0],quotainfo[2],quotainfo[3],quotainfo[5])          
@@ -61,18 +61,18 @@ class Quota(TestBase):
         else:
           lfscmd="lfs quota -u %s %s" %(userid,space)
         ##  print(lfscmd)
-	  quotainfo=capture(lfscmd).split("\n")[2].split()
-	  quotainfo[5]=quotainfo[5].strip("*")
-	  quotainfo[1]=quotainfo[1].strip("*")
+          quotainfo=capture(lfscmd).split("\n")[2].split()
+          quotainfo[5]=quotainfo[5].strip("*")
+          quotainfo[1]=quotainfo[1].strip("*")
 ##	  print(quotainfo[1], quotainfo[3], quotainfo[5], quotainfo[7]
 ##	  print(quotainfo)
-	  if len(quotainfo) <8:
-	    self.error_message+="\tError: "+"No valid quota report\n"
+          if len(quotainfo) <8:
+            self.error_message+="\tError: "+"No valid quota report\n"
             return False
 	
-	  if float(quotainfo[1]) >= float(quotainfo[3])*0.85 :
+          if float(quotainfo[1]) >= float(quotainfo[3])*0.85 :
             Flag=False
-	    self.error_message+="\tError: You are over/close to the disk limit under %s.\n" %space   
+            self.error_message+="\tError: You are over/close to the disk limit under %s.\n" %space   
           if float(quotainfo[5]) >= float(quotainfo[7])*0.85 :	
             Flag=False
             self.error_message+="\tError: Your are over/close to the inode limit under %s.\n" %space 

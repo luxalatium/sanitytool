@@ -31,7 +31,7 @@ class Modules(TestBase):
       modcmd="tests/bash_module_test.bash"
       output=capture(modcmd)
       if "not found" in output:
-	self.error_message+="\tError: Module is not defined."
+        self.error_message+="\tError: Module is not defined."
         return False
       
       modcmd="tests/csh_module_test.csh"
@@ -43,7 +43,7 @@ class Modules(TestBase):
       unknown = "**UNKNOWN**"
       value = os.environ.get('LMOD_CMD',unknown)
       if (value == unknown):
-	  self.error_message+="\tError: Module is not defined."
+          self.error_message+="\tError: Module is not defined."
           return False             
 
       lmodcmd=os.environ['LMOD_CMD']
@@ -52,8 +52,8 @@ class Modules(TestBase):
       module_need=["TACC"]
 #     print(output)
       for mod1 in module_need:
-	if not any(mod1 in tmpstr for tmpstr in output):
-	  self.error_message+="\tError: Necessary module \"%s\" is not loaded.\n" %mod1
-	  Flag=False
+        if not any(mod1 in tmpstr for tmpstr in output):
+          self.error_message+="\tError: Necessary module \"%s\" is not loaded.\n" %mod1
+          Flag=False
       
       return Flag
