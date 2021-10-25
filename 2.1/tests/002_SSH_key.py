@@ -25,6 +25,8 @@ class SSH_key(TestBase):
   def execute(self):
     result  = True
     pub_key = capture('cat ~/.ssh/id_rsa.pub').replace('\n','')
+    print(pub_key)
+    print(type(pub_key))
     cmd     = "grep -F \"%s\" ~/.ssh/authorized_keys > /dev/null 2>&1" % pub_key
     status  = run_cmd(cmd)
 

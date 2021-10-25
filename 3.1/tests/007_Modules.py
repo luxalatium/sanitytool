@@ -42,7 +42,8 @@ class Modules(TestBase):
 
     lmodcmd=os.environ['LMOD_CMD']
     mlcmd=lmodcmd + " python list"
-    output=captureErr(mlcmd).split()
+#   Add this for python3
+    output=captureErr(mlcmd).decode().split()
     module_need=["TACC"]
     for mod1 in module_need:
       if mod1 not in output:

@@ -168,7 +168,7 @@ def main():
         entry['test'].help()
     else:
       if silent_flag:
-		pass
+        pass
       else:
         print("%3d: %s" %(entry['num'], entry['test'].description())) 
         print("\tPassed\n")
