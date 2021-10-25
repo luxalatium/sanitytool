@@ -27,12 +27,10 @@ class Standard_Variables(TestBase):
   def execute(self):
     # Different variable are necessary on different machines.
     standardVarT = {
-      'stampede' : [ "HOME", "WORK", "STOCKYARD", "SCRATCH" ],
       'stampede2': [ "HOME", "WORK", "STOCKYARD", "SCRATCH" ],
-      'ls4'      : [ "HOME", "WORK", "SCRATCH" ],
-      'maverick' : [ "HOME", "WORK", "STOCKYARD" ],
       'maverick2': [ "HOME", "WORK"],
-      'frontera' : [ "HOME", "WORK", "SCRATCH" ] 
+      'frontera' : [ "HOME", "WORK", "SCRATCH" ], 
+      'ls6'      : [ "HOME", "WORK", "SCRATCH" ]
       }
 
     host = syshost()
@@ -42,7 +40,7 @@ class Standard_Variables(TestBase):
       self.error_message+="Not a known host."
       result = False
       return
- 
+
     if not varA:
       return True
 

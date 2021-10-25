@@ -25,7 +25,7 @@ class Allocation(TestBase):
 #   userid="jkatzene"      #Fake test 
       
     host=syshost()
-    if (host=="stampede2" or host=="maverick" or host=="frontera"):
+    if (host=="stampede2" or host=="maverick2" or host=="frontera" or host=="ls6"):
       TACC_ACC_DIR="/usr/local/etc/"
     elif host=="ls4":
       TACC_ACC_DIR="/sge_common/default/acct/map/"

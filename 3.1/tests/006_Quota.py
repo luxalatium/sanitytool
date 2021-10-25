@@ -24,7 +24,9 @@ class Quota(TestBase):
     host=syshost()
       
     if (host=="stampede2" or host=="frontera"):
-      spaces=["/home1","/work2"]
+      spaces=["/home1","/work"]
+    elif (host=="ls6"):
+      spaces=["/work"]
     elif host=="ls4":
       spaces=["/home1","/work"]
     elif (host=="maverick"):
@@ -54,7 +56,7 @@ class Quota(TestBase):
 
       else:
         lfscmd="lfs quota -u %s %s" %(userid,space)
-        ##  print(lfscmd)
+        ###print(lfscmd)
       
         quotainfo=capture(lfscmd).split("\n")[2].split()
         quotainfo[5]=quotainfo[5].strip("*")

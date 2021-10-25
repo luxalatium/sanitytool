@@ -21,7 +21,7 @@ class Block_User(TestBase):
 
   def execute(self):
     host = syshost()
-    if (host!="stampede2" and host!="frontera"):
+    if (host!="stampede2" and host!="frontera" and host!="ls6"):
       return True
 
     userid=getpass.getuser()
