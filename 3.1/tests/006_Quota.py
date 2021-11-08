@@ -26,7 +26,7 @@ class Quota(TestBase):
     if (host=="stampede2" or host=="frontera"):
       spaces=["/home1","/work"]
     elif (host=="ls6"):
-      spaces=["/work"]
+      spaces=["/home1", "/work"]
     elif host=="ls4":
       spaces=["/home1","/work"]
     elif (host=="maverick"):
@@ -37,7 +37,7 @@ class Quota(TestBase):
     Flag=True
 
     for space in spaces:
-      if ( (host=="ls4" and space=="/home1") or (host=="maverick" and space=="/home")):
+      if ( (host=="ls6" and space=="/home1") or (host=="maverick" and space=="/home")):
         quotacmd="quota"
         rawinfo=capture(quotacmd).split("\n")
         if len(rawinfo)<3:
@@ -50,7 +50,7 @@ class Quota(TestBase):
         if float(quotainfo[0]) >= float(quotainfo[2])*0.9 :
           Flag=False
           self.error_message+="        ERROR: You are over/close to the disk limit under %s.\n" %space
-        if float(quotainfo[3]) >= float(quotainfo[5])*0.9 :
+        if (quotainfo[5] != "0") and (float(quotainfo[3]) >= float(quotainfo[5])*0.9) :
           Flag=False
           self.error_message+="        ERROR: Your are over/close to the inode limit under %s.\n" %space
 
