@@ -22,7 +22,7 @@ class Compilers(TestBase):
 
     host=syshost()
 
-    if syshost == 'stampede3':
+    if host == 'stampede3':
       compilers=["gcc","g++","gfortran","icx","icpx","ifx","mpicc","mpicxx","mpif90"]
     else:
       compilers=["gcc","g++","gfortran","icc","icpc","ifort","mpicc","mpicxx","mpif90"]
