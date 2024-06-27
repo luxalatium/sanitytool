@@ -1,3 +1,0 @@
-#!/bin/csh
-alias module
-
